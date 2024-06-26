@@ -1,8 +1,9 @@
 package org.example;
 
 import java.sql.*;
-
 public class CrudFunc {
+    private static final String DELETE_REMINDER_SQL = "DELETE FROM reminder WHERE id = ?";
+
 
     private static final String URL = "jdbc:postgresql://localhost:5432/Demo";
     private static final String USER = "postgres";
@@ -58,7 +59,6 @@ public class CrudFunc {
         } catch (SQLException e) {
             System.out.println("Database error: " + e.getMessage());
         }
-    }
 
 
     private static final String DELETE_REMINDER_SQL = "DELETE FROM reminder WHERE id = ?";
