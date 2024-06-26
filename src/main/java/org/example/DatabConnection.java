@@ -21,7 +21,11 @@ public class DatabConnection {
 
 
         try {
+
+            conn = DriverManager.getConnection(
+
              conn = DriverManager.getConnection(
+
                     url, user, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -30,7 +34,11 @@ public class DatabConnection {
                 "Connection was successfully established");
 
 
+
+        return conn;
+
        return conn;
+
     }
 }
 
