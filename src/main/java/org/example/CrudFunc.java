@@ -10,8 +10,9 @@ public class CrudFunc {
     private static final String PASSWORD = "123456";
 
     public static void main(String[] args) {
-        updateTaskById(4, "swimming with the WHALE BABIES");
+//        updateTaskById(4, "swimming with the WHALE BABIES");
 //        addTask (3, "something somewhere", 2, false);
+        readTask();
 
     }
 
@@ -59,9 +60,10 @@ public class CrudFunc {
         } catch (SQLException e) {
             System.out.println("Database error: " + e.getMessage());
         }
+    }
 
 
-    private static final String DELETE_REMINDER_SQL = "DELETE FROM reminder WHERE id = ?";
+//    private static final String DELETE_REMINDER_SQL = "DELETE FROM reminder WHERE id = ?";
 
     public static void deleteFunc(int id) throws SQLException {
         Connection conn = DatabConnection.getConnection();
@@ -73,7 +75,63 @@ public class CrudFunc {
 
     }
 
+
+    // Read All Tasks Function
+    public static void readTask() {
+        String sql = "SELECT * FROM reminder";
+
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String task = resultSet.getString("task");
+                int importance = resultSet.getInt("importance");
+                boolean completed = resultSet.getBoolean("completed");
+
+                System.out.println("Task ID: " + id);
+                System.out.println("Task: " + task);
+                System.out.println("Importance: " + importance);
+                System.out.println("Completed: " + completed);
+                System.out.println();
+            }
+        } catch (SQLException e) {
+            System.out.println("Database error: " + e.getMessage());
+        }
+    }
+
+
+
+//    public static void readTask(int id) {
+//        String sql = "SELECT * FROM reminder WHERE id = ?";
+//
+//        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+//             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+//
+//            preparedStatement.setInt(1, id);
+//
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//
+//            if (resultSet.next()) {
+//                String task = resultSet.getString("task");
+//                int importance = resultSet.getInt("importance");
+//                boolean completed = resultSet.getBoolean("completed");
+//
+//                System.out.println("Task ID: " + id);
+//                System.out.println("Task: " + task);
+//                System.out.println("Importance: " + importance);
+//                System.out.println("Completed: " + completed);
+//            } else {
+//                System.out.println("No record found with the given id.");
+//            }
+//        } catch (SQLException e) {
+//            System.out.println("Database error: " + e.getMessage());
+//        }
+//    }
 }
+
+
 
 
 

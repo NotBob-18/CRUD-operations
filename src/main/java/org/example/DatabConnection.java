@@ -22,11 +22,7 @@ public class DatabConnection {
 
         try {
 
-            conn = DriverManager.getConnection(
-
-             conn = DriverManager.getConnection(
-
-                    url, user, password);
+            conn = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -37,7 +33,6 @@ public class DatabConnection {
 
         return conn;
 
-       return conn;
 
     }
 }
