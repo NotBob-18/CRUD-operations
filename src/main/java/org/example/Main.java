@@ -4,18 +4,10 @@ package org.example;
 import java.sql.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
-        try {
-            Connection con = DatabConnection.getConnection();
-            if (con == null) {
-                System.out.println("Houston, We're ready to Rock!!");
-            } else {
-                System.out.println("Failed to make connection!");
-            }
-        } catch (Exception e) {
+        CrudFunc.deleteFunc( 3);
 
-        }
     }
 
 }
