@@ -12,7 +12,7 @@ public class CrudFunc {
     public static void main(String[] args) {
 //        updateTaskById(4, "swimming with the WHALE BABIES");
 //        addTask (3, "something somewhere", 2, false);
-        readTask();
+//        readTask();
 
     }
 
@@ -71,7 +71,7 @@ public class CrudFunc {
         PreparedStatement ps = conn.prepareStatement(DELETE_REMINDER_SQL);
         ps.setInt(1, id);
         ps.executeUpdate();
-
+        System.out.println("succsessfully deleted");
 
     }
 

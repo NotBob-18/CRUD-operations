@@ -28,9 +28,6 @@ public class DatabConnection {
         }
         System.out.println(
                 "Connection was successfully established");
-
-
-
         return conn;
 
 
