@@ -39,7 +39,7 @@ public class CrudFunc {
     }
 
     // Add Function
-    public static void addTask(int id, String task, int importance, boolean completed) {
+    public static void addTask(int id, String task, int importance) {
         String sql = "INSERT INTO reminder (id, task, importance, completed) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
